@@ -1,0 +1,13 @@
+services:
+  test_app:
+    build:
+      context: .
+    container_name: fastapi_test_app
+    command: uvicorn src.main:app --host 0.0.0.0
+    ports:
+      - "8000:8000"
+    environment:
+      - SQLITE_PATH=rolls.db
+    volumes:
+      - ./src:/app/src
+      - ./rolls.db:/app/rolls.db
